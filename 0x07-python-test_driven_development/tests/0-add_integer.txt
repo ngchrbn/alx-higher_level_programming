@@ -1,0 +1,42 @@
+The ``0-add_integer`` module
+============================
+
+``add_integer()`` returns the integer addition of its arguments.
+The two arguments must be of type int or float.
+It raises a TypeError is one of the arguments is not int or float.
+Arguments are casted to int before the addition if they are of type float.
+
+How to use ``add_integer``
+
+First import the function from the module:
+	>>> add_integer = __import__("0-add_integer").add_integer
+	>>> len(add_integer.__doc__) > 1
+	True
+
+Examples:
+	>>> add_integer(1, 2)
+	3
+	
+	>>> add_integer(100, -2)
+	98
+	
+	>>> add_integer(2)
+	100
+	
+	>>> add_integer(100.3, -2)
+	98
+    	
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+	
+	>>> add_integer(None)
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+        
+	>>> add_integer(float('inf'), 6)
+        Traceback (most recent call last):
+        ...
+        OverflowError: cannot convert float infinity to integer
