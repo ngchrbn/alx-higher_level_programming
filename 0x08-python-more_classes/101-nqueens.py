@@ -2,10 +2,13 @@
 
 import sys
 
+
 def is_valid_position(queens, row, col):
     """Checks if placing a queen at (row, col) is valid."""
     for queen in queens:
-        if queen[0] == row or queen[1] == col or abs(queen[0] - row) == abs(queen[1] - col):
+        if queen[0] == row or queen[1] == col:
+            return False
+        if abs(queen[0] - row) == abs(queen[1] - col):
             return False
     return True
 
@@ -20,6 +23,7 @@ def solve_n_queens(n, row=0, queens=[]):
             queens.append((row, col))
             solve_n_queens(n, row + 1, queens)
             queens.pop()  # Backtrack
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
