@@ -16,3 +16,4 @@ def is_same_class(obj, a_class):
         Otherwise - False.
     """
     return type(obj) == a_class
+
