@@ -1,0 +1,113 @@
+Test for ``7-base_geometry`` module
+=====================================
+
+Using ``BaseGeometry``
+======================
+
+Importing the class from the module:
+	>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Checking for instantiation of the class:
+	>>> bg = BaseGeometry()
+
+Checking for module docstring:
+         >>> m = __import__("7-base_geometry").__doc__
+         >>> len(m) > 1
+         True
+
+Checking for class docstring:
+         >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+         >>> len(c) > 1
+         True
+
+Checking for methods docstring:
+	>>> m1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> len(m1) > 1
+	True
+	>>> m2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+	>>> len(m2) > 1
+	True
+
+Checking for area method:
+	>>> bg.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+Checking for passing argument to area method:
+	>>> bg.area(4)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 2 were given
+	
+	>>> bg.area(4, 5)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 3 were given
+
+Checking for integer_validator for valid values method:
+	>>> bg.integer_validator("name", 2)
+	>>> bg.integer_validator("name", 4)
+
+Checking for integer_validator empty arguments:
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Checking for missing value argument:
+	>>> bg.integer_validator("name")
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Checking for value that is not an integer:
+	>>> bg.integer_validator("name", None)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+	
+	>>> bg.integer_validator("name", True)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+	
+	>>> bg.integer_validator("name", [1, 2])
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+	
+	>>> bg.integer_validator("name", {1, 3})
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+	
+	>>> bg.integer_validator("name", (1,))
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+	>>> bg.integer_validator("name", "value")
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+	>>> def func_name():
+	...	pass
+	...
+	
+	>>> bg.integer_validator("name", func_name)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+	
+Checking for value that is less or equal to 0:
+	>>> bg.integer_validator("name", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: name must be greater than 0
+	
+	>>> bg.integer_validator("name", -6)
+	Traceback (most recent call last):
+	...
+	ValueError: name must be greater than 0
