@@ -26,22 +26,22 @@ class Rectangle(Base):
         @property
         def width(self):
             """Returns the Rectangle instance's width"""
-            return self.width
+            return self.__width
 
         @property
         def height(self):
             """Returns the Rectangle instance's height."""
-            return self.height
+            return self.__height
 
         @property
         def x(self):
             """Returns the Rectangle instance's x."""
-            return self.x
+            return self.__x
 
         @property
         def y(self):
             """Returns the Rectangle instance's y."""
-            return self.y
+            return self.__y
 
         @width.setter
         def width(self, width):
